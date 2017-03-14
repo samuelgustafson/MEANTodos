@@ -1,23 +1,24 @@
 var express = require('express');
-var todoRouter = express.Router();
-var Todo = ('../models/todo.model');
+var todosRouter = express.Router();
+var Todos = require('../models/todos.model');
+
 // GET /todos
-todoRouter.get('/todos', function(req, res){
-  Todo.find({}, function(err, documents){
+todosRouter.get('/todos', function(req, res){
+  Todos.find({}, function(err, documents){
     if(err){
       res.status(500).json({
         msg:err
       });
     } else {
       res.status(200).json({
-        todos: documnts
+        todos: documents
       });
     }
   });
 });
 // GET /todos/:id
-todoRouter.get('/todos/:id', function(req, res){
-  Todo.find({_id:req.params.id}, function (err, documents){
+todosRouter.get('/todos/:id', function(req, res){
+  Todos.find({_id:req.params.id}, function (err, documents){
     if(err){
       res.status(500).json({
         msg:err
@@ -30,9 +31,9 @@ todoRouter.get('/todos/:id', function(req, res){
   });
 });
 // POST /todos/
-todoRouter.post('/todos', function(req, res){
-  var todo = new Todo(req.body);
-  todo.save(function(err, document){
+todosRouter.post('/todos', function(req, res){
+  var todos = new Todos(req.body);
+  todos.save(function(err, document){
     if(err){
       res.status(500).json({
         msg: err
@@ -45,8 +46,8 @@ todoRouter.post('/todos', function(req, res){
   });
 });
 // PUT /todos/:id
-todoRouter.put('/todos/:id', function(req, res){
-  Todo.findOneAndUpdate({_id: req.params.id}, req.body, function(err, document){
+todosRouter.put('/todos/:id', function(req, res){
+  Todos.findOneAndUpdate({_id: req.params.id}, req.body, function(err, document){
     if(err){
       res.status(500).json({
         msg: err
@@ -59,8 +60,8 @@ todoRouter.put('/todos/:id', function(req, res){
   });
 });
 // DELETE /todos/:id
-todoRouter.delete('/todos/:id', function(req, res){
-  Todo.remove({_id: req.params.id}, req.body, function(err, document){
+todosRouter.delete('/todos/:id', function(req, res){
+  Todos.remove({_id: req.params.id}, req.body, function(err, document){
     if(err){
       res.status(500).json({
         msg: err
@@ -73,4 +74,4 @@ todoRouter.delete('/todos/:id', function(req, res){
   });
 });
 
-module.exports = todoRouter;
+module.exports = todosRouter;
