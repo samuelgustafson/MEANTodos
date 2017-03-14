@@ -6,11 +6,14 @@ var todoRouter = require('./routers/todo.router');
 
 var port = process.env.PORT || 8080;
 var mongoURI = process.env.MONGOURI || require('./secrets').mongoURI;
-
+//power-up middleware
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
-
+//connect to database
 mongoose.connect(mongoURI);
+
+server.use(todoRouter);
+
 server.listen(port, function(){
   console.log('Now listening on port...', port);
 })
