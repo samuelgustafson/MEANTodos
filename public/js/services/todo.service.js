@@ -8,15 +8,9 @@
     var baseURL = '/todos';
 
     function getAll(){
-      return $http.get(baseURL)
-                  .then(function(response){
-                    console.log(response.data);
-                  });
+      return $http.get(baseURL);
     }
 
-    function something(){
-      console.log('Hey!');
-    }
     return {
       getAll: getAll
     };
