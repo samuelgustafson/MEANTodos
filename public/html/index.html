@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en" ng-app="MEANTodos">
+=======
+<html lang="en" ng-app='MEANTodos'>
+>>>>>>> 4df4900f92be5bf6e50ebc016e44dee77d1fbe44
 <head>
   <meta charset="UTF-8">
   <title>MEANTodos</title>
@@ -10,11 +14,16 @@
 
   <div ng-controller='TodoController'>
     <input type="text" ng-model='newTodo.description'>
+<<<<<<< HEAD
     <button ng-click='addTodo(newTodo)'>add todo</button>
+=======
+    <button ng-click='addTodo(newTodo)'>Add Todo</button>
+>>>>>>> 4df4900f92be5bf6e50ebc016e44dee77d1fbe44
     <hr>
     <ul>
       <li ng-repeat='todo in todos'>
         <div ng-hide='todo.edit'>
+<<<<<<< HEAD
         {{ todo.description }}
         <button ng-click="edit(todo)">E</button>
         <button ng-click='deleteTodo(todo)'>&times;</button>
@@ -23,6 +32,19 @@
         <input type="text" ng-model='todo.description'>
         <button ng-click ='update(todo)'>Update</button>
       </div>
+=======
+          <input type="checkbox"
+          ng-model='todo.completed'
+          ng-change='update(todo)'>
+          <span ng-class='{strikethrough: todo.completed}'>{{ todo.description }}</span>
+          <button ng-click="edit(todo)">E</button>
+          <button ng-click='deleteTodo(todo)'>&times;</button>
+        </div>
+        <div ng-show='todo.edit'>
+          <input type="text" ng-model='todo.description'>
+          <button ng-click='update(todo)'>Update</button>
+        </div>
+>>>>>>> 4df4900f92be5bf6e50ebc016e44dee77d1fbe44
       </li>
     </ul>
   </div>
