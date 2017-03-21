@@ -11,6 +11,7 @@
       $scope.deleteTodo = deleteTodo;
       $scope.update = update;
       $scope.edit = edit;
+      $scope.autocheck = true;
 
       getTodos();
 
@@ -20,6 +21,8 @@
       function onChange(){
         $scope.todos = TodoService.fetch();
       });
+
+
 
       function edit(todo){
         console.log('editing...');
